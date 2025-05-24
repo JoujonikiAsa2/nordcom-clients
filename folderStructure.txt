@@ -1,0 +1,75 @@
+/nordCom-app
+│
+├── public/                          # Public assets (images, icons, robots.txt)
+│
+├── src/
+│   ├── app/                         # Next.js App Router entry
+│   │   ├── layout.tsx               # Root layout (Header/Footer here)
+│   │   ├── page.tsx                 # Home page
+│   │
+│   │   ├── products/                # Product listings & detail pages
+│   │   │   ├── page.tsx             # /products
+│   │   │   └── [slug]/page.tsx      # /products/:slug
+│   │
+│   │   ├── cart/                    # Cart view
+│   │   │   └── page.tsx
+│   │
+│   │   ├── auth/                    # Auth pages (public)
+│   │   │   ├── login/page.tsx
+│   │   │   ├── register/page.tsx
+│   │   │   └── forgot-password/page.tsx
+│   │
+│   │   ├── dashboard/               # User dashboard (protected)
+│   │   │   ├── layout.tsx           # Sidebar + nested pages
+│   │   │   ├── page.tsx             # Dashboard index
+│   │   │   ├── orders/page.tsx      # Order history
+│   │   │   ├── order/[id]/page.tsx  # Single order view
+│   │   │   ├── settings/page.tsx    # Profile settings
+│   │   │   └── addresses/page.tsx   # Manage addresses
+│   │
+│   │   ├── api/                     # Route handlers (Next.js API)
+│   │   │   ├── auth/
+│   │   │   ├── users/
+│   │   │   ├── orders/
+│   │   │   └── products/
+│
+│   ├── components/                  # Reusable UI components
+│   │   ├── layout/                  # Header, Footer, Sidebar
+│   │   ├── ui/                      # Buttons, Modals, Inputs, etc.
+│   │   ├── product/                 # ProductCard, ProductGrid
+│   │   └── dashboard/              # Dashboard widgets
+│
+│   ├── features/                    # Redux slices (modular feature folders)
+│   │   ├── auth/                    # authSlice, thunks, etc.
+│   │   ├── cart/
+│   │   ├── products/
+│   │   ├── orders/
+│   │   └── user/
+│
+│   ├── lib/                         # Reusable utilities
+│   │   ├── fetcher.ts               # Fetch wrapper or Axios instance
+│   │   ├── formatter.ts             # Date, currency, string formatting
+│   │   └── validators.ts
+│
+│   ├── store/                       # Redux Toolkit store setup
+│   │   ├── index.ts
+│   │   └── rootReducer.ts
+│
+│   ├── services/                    # Business logic & API calls
+│   │   ├── productService.ts
+│   │   ├── authService.ts
+│   │   ├── orderService.ts
+│   │   └── userService.ts
+│
+│   ├── constants/                   # Global constants (e.g., routes, roles)
+│   ├── hooks/                       # Custom React hooks
+│   ├── middlewares/                # Custom middleware logic
+│   ├── types/                       # Global TypeScript types/interfaces
+│   ├── styles/                      # Global & modular styles (Tailwind, etc.)
+│
+├── middleware.ts                    # Route protection (if needed)
+├── next.config.js
+├── tailwind.config.js
+├── tsconfig.json
+├── .env.local
+└── package.json

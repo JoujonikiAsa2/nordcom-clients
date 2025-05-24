@@ -7,7 +7,7 @@ const Home = () => {
     <>
     <div className='max-w-7xl mx-auto'>
         <Hero />
-       <SliderProducts />
+        <SliderProducts />
     </div>
     </>
   );

@@ -26,7 +26,7 @@ const Topmenubar = () => {
         <div className='relative bg-[#101940] mx-auto w-full text-white px-4 py-2'>
             <div className='flex justify-between gap-4 items-center mx-auto max-w-7xl'>
             <div className='flex gap-4 items-center'>
-                <CarIcon />
+                <CarIcon stroke='white'/>
                 <p>Track Your Order</p>
             </div>
             <div className='flex gap-6 items-center'>

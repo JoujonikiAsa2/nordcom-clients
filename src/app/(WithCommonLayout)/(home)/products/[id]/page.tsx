@@ -4,8 +4,8 @@ import NotFound from "../not-found";
 import { TProduct } from "@/types/product";
 
 export const metadata = {
-  title: 'Product Details',
-  description: 'Browse details of each product',
+  title: "Product Details",
+  description: "Browse details of each product",
 };
 
 async function getProductById(id: string): Promise<TProduct | null> {
@@ -28,7 +28,6 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
   try {
     const awaitedParams = await Promise.resolve(params);
     product = await getProductById(awaitedParams.id);
-    console.log(product);
   } catch (error) {
     console.error("Error fetching review:", error);
     return NotFound();

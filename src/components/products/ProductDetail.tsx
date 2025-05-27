@@ -33,14 +33,14 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
         {/* left side */}
         <div className="w-full">
           <Image
-            src={preview ? `${preview}` : product.images[0]}
+            src={preview ? `${preview}` : product?.images[0]}
             width={581}
             height={318}
             alt="main image"
             className="w-full h-[318px] object-contain border bg-[#EAEAEA] rounded-xl"
           />
           <div className="grid grid-cols-4 gap-4 pt-4">
-            {product.images.slice(0, 4).map((item: string, index: number) => (
+            {product?.images?.slice(0, 4).map((item: string, index: number) => (
               <div key={index}>
                 <Image
                   src={item}
@@ -64,26 +64,26 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
         <div className="">
           <div className="w-full space-y-3">
             <div className=" font-normal text-base  leading-[170%] flex gap-2">
-              <p>{product.category.name}</p>
+              <p>{product?.category?.name}</p>
 
               <button onClick={handleFavoriteProduct}>
                 <HeartIcon />
               </button>
             </div>
             <p className="font-semibold text-3xl text-[#101940] leading-[140%]">
-              {product.name}
+              {product?.name}
             </p>
             <div>
               <p className="font-normal text-base text-[#101940] leading-[170%] flex gap-1">
                 <CarIcon stroke="#394060" />
-                <span>{format(product.createdAt, "EEEE, dd LLL")}</span>,
+                <span>{format(product?.createdAt, "EEEE, dd LLL")}</span>,
               </p>
               <p className="font-normal text-base text-[#848484] leading-[170%] flex gap-1">
                 <del>$12.99</del>,
               </p>
             </div>
             <div className="font-semibold text-3xl text-[#101940] leading-[150%] flex items-center gap-6">
-              <p>${product.price}</p>
+              <p>${product?.price}</p>
               <p className="font-normal text-base text-[#848484] leading-[170%] flex items-center gap-4">
                 <Star fill="#FAB758" className="text-[#FAB758] size-5" />
                 <span>4.5 - 254</span> reviews
@@ -119,19 +119,19 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
             </Button>
           </div>
           <div className="grid grid-cols-1 gap-9 pt-8">
-            {product.description && (
+            {product?.description && (
               <div className="w-full">
                 <div className="bg-[#F9F9F9] w-full h-[70px] rounded-t-2xl font-medium text-2xl text-[#101940] leading-[150%]  flex items-center justify-start px-4">
                   <span>Description</span>
                 </div>
                 <div className=" rounded-b-2xl px-8 py-4 shadow-sm">
                   <p className="font-normal text-base text-[#848484] leading-[170%]">
-                    {product.description}
+                    {product?.description}
                   </p>
                 </div>
               </div>
             )}
-            {product.specification && (
+            {product?.specification && (
               <div className="w-full">
                 <div className="bg-[#F9F9F9] w-full h-[70px] rounded-t-2xl font-medium text-2xl text-[#101940] leading-[150%]  flex items-center justify-start px-4">
                   <span>Specification</span>
@@ -146,9 +146,9 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
                         key={index}
                         className="font-normal text-base text-[#848484] leading-[170%] flex flex-wrap gap-4 border-b py-2"
                       >
-                        <div className="">{specification.label}</div>
+                        <div className="">{specification?.label}</div>
                         <div className=" text-[#2B2B2B]">
-                          {specification.value}
+                          {specification?.value}
                         </div>
                       </div>
                     )

@@ -10,7 +10,7 @@ export const metadata = {
 
 async function getProductById(id: string): Promise<TProduct | null> {
   try {
-    const res = await fetch(`http://localhost:5000/api/v1/product/${id}`, {
+    const res = await fetch(`https://nordcom-backend-server.vercel.app/api/v1/product/${id}`, {
       cache: "no-store",
     });
     const json = await res.json();

@@ -1,36 +1,168 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nordcom E-commerce Platform
 
-## Getting Started
+A modern, full-stack e-commerce platform built with Next.js and Node.js, offering a seamless shopping experience with robust backend capabilities.
 
-First, run the development server:
+![Nordcom Banner](./public/banner.png)
+
+## 🚀 Features
+
+- **Modern UI/UX** - Responsive design with Tailwind CSS
+- **User Authentication** - Secure login/signup with JWT
+- **Product Management** - Advanced filtering and search
+- **Shopping Cart** - Real-time updates with Redux
+- **Payment Integration** - Secure checkout process
+- **Order Management** - Track order status and history
+- **Admin Dashboard** - Comprehensive control panel
+- **API Documentation** - Detailed endpoint documentation
+
+## ⚙️ Tech Stack
+
+### Frontend
+
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Redux Toolkit
+- Embla Carousel
+- Lucide Icons
+
+### Backend
+
+- Node.js
+- Express.js
+- Prisma ORM
+- PostgreSQL
+- JWT Authentication
+
+## 🛠️ Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/nordcom.git
+cd nordcom
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies for both frontend and backend:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Frontend
+cd clients
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Backend
+cd ../server
+npm install
+```
 
-## Learn More
+3. Set up environment variables:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Frontend (.env.local)
+NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_STRIPE_PUBLIC_KEY=your_stripe_public_key
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Backend (.env)
+DATABASE_URL="postgresql://username:password@localhost:5432/nordcom"
+JWT_SECRET=your_jwt_secret
+STRIPE_SECRET_KEY=your_stripe_secret_key
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Run the development servers:
 
-## Deploy on Vercel
+```bash
+# Frontend (http://localhost:3000)
+npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Backend (http://localhost:5000)
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Project Structure
+
+```
+nordcom/
+├── clients/                # Frontend Next.js application
+│   ├── app/               # App router pages
+│   ├── components/        # Reusable components
+│   ├── lib/              # Utilities and helpers
+│   └── store/            # Redux store configuration
+│
+└── server/               # Backend Express.js application
+    ├── controllers/      # Route controllers
+    ├── models/          # Prisma schema and models
+    ├── routes/          # API routes
+    └── middleware/      # Custom middleware
+```
+
+## 🔑 Environment Variables
+
+Required environment variables for the project:
+
+```env
+# Frontend (.env.local)
+NEXT_PUBLIC_API_URL
+NEXT_PUBLIC_STRIPE_PUBLIC_KEY
+
+# Backend (.env)
+DATABASE_URL
+JWT_SECRET
+STRIPE_SECRET_KEY
+```
+
+## 📚 API Documentation
+
+API documentation is available at `/api-docs` when running the development server. It includes detailed information about:
+
+- Authentication endpoints
+- Product management
+- Order processing
+- User management
+- Admin operations
+
+## 🧪 Testing
+
+Run the test suites:
+
+```bash
+# Frontend tests
+npm run test
+
+# Backend tests
+npm run test
+```
+
+## 🚀 Deployment
+
+The application can be deployed using Vercel for the frontend and your preferred hosting service for the backend:
+
+```bash
+# Deploy frontend to Vercel
+npm run deploy
+
+# Build backend for production
+npm run build
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Contributing
+
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## 📞 Support
+
+For support, email support@nordcom.com or join our Slack channel.
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Prisma](https://www.prisma.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+
+---
+
+Built with ❤️ by [Your Name](https://github.com/your-username)

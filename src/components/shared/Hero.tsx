@@ -32,7 +32,7 @@ const Hero = () => {
     ];
 
     return (
-        <div className='max-w-7xl mx-auto py-5'>
+        <div className='max-w-7xl mx-auto py-5 px-4 lg:px-0'>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
                 {/* Hero Carousel */}
                 <div className='lg:col-span-2 relative'>

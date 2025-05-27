@@ -47,7 +47,7 @@ export type TProduct = {
   isDeleted: boolean;
   createdAt: string;
   updatedAt: string;
-  brand: TBrand;
+  brand?: TBrand;
   category: TCategory;
   Review: any[]; 
 };

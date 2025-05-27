@@ -12,7 +12,7 @@ import {
 } from "redux-persist";
 import { createNoopStorage } from "./storage";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
-import counterReducer from "./features/counter/counterSlice";
+import counterReducer from "../features/counter/counterSlice";
 
 const storage =
   typeof window !== "undefined"

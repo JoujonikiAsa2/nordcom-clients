@@ -21,9 +21,9 @@ const Home = () => {
         <CampaignSales />
          <NewArivals />
          <CampaignSalesSummer />
-        <div className='my-10'>
-           <BrandCarousel />
-        </div>
+         <div className='my-10'>
+         <BrandCarousel />
+         </div>
         <WeOffering />
         <Blog />
         <ReviewCarousel

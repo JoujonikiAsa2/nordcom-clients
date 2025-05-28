@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import CountdownTimer from '@/utilies/CountdownTimer'
-// import ProductCard from './ProductCard'
 import { TProduct } from '@/types/product'
 import ProductCard from './ProductCard'
 // import Loading from '@/components/ui/Loading'

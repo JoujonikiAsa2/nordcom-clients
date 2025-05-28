@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex justify-center items-center">
+    <div className="min-h-[500px] flex justify-center items-center">
       <Suspense fallback={<div>Loading...</div>}>
         <LoginForm />
       </Suspense>

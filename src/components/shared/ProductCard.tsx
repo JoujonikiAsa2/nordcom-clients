@@ -24,7 +24,7 @@ interface ProductCardProps {
 
 const defaultProduct: Product = {
   id: '',
-  name: 'Product Name',
+  name: 'A Product',
   price: 0,
   discountPrice: 0,
   images: [],

@@ -1,3 +1,4 @@
+import DynamicNavigation from "@/components/dynamicNavigation/dynamicNavigation";
 import Footer from "@/components/shared/Footer";
 import Midnavbar from "@/components/shared/Midnavbar";
 import Navbar from "@/components/shared/Navbar";
@@ -11,6 +12,7 @@ const CommonLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="flex flex-col mx-auto max-w-7xl">
         <Midnavbar />
         <Navbar />
+        <DynamicNavigation />
         <main className="min-h-screen">{children}</main>
       </div>
       <div>

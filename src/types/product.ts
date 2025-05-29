@@ -51,3 +51,10 @@ export type TProduct = {
   category: TCategory;
   Review: any[]; 
 };
+
+export type TCategoryWithProducts = {
+  _id: string
+  name: string
+  description?: string
+  products: TProduct[] // Reuse your existing TProduct type
+}

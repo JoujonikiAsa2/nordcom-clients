@@ -25,7 +25,7 @@ const DealOftheDay = () => {
       const response = await fetch(backendUrl)
       const data1 = await response.json()
       const data = data1?.data
-      console.log('Fetched deal products:',  data)
+      // console.log('Fetched deal products:',  data)
 
       if (!response.ok) {
         throw new Error(data.message || 'Failed to fetch deal products')

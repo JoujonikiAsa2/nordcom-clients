@@ -29,7 +29,7 @@ const Topmenubar = () => {
                 <CarIcon stroke='white'/>
                 <p>Track Your Order</p>
             </div>
-            <div className='flex gap-6 items-center'>
+            <div className='flex gap-6 items-center z-40'>
                 <div className='relative'>
                     <button 
                         className='flex items-center gap-2 hover:opacity-80'
@@ -56,7 +56,7 @@ const Topmenubar = () => {
                         </div>
                     )}
                 </div>
-                <div className='relative'>
+                <div className='relative '>
                     <button 
                         className='flex items-center gap-2 hover:opacity-80'
                         onClick={() => setShowLanguages(!showLanguages)}
@@ -65,7 +65,7 @@ const Topmenubar = () => {
                         <ChevronDown size={16} />
                     </button>
                     {showLanguages && (
-                        <div className='absolute top-full right-0 mt-2 bg-white text-gray-800 rounded shadow-lg'>
+                        <div className='absolute top-full right-0 mt-2 bg-white text-gray-800 rounded shadow-lg '>
                             {languages.map((language) => (
                                 <button
                                     key={language.code}

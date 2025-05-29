@@ -1,7 +1,10 @@
+'use client'
 import React from 'react'
 import { ArrowRight } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const CampaignSales = () => {
+  const router = useRouter()
   return (
     <div className='max-w-7xl mx-auto my-10 px-4 sm:px-6 lg:px-0'>
       <div className='relative min-h-[400px] sm:h-[350px] md:h-[325px] bg-[#101940] rounded-lg overflow-hidden'>
@@ -33,7 +36,7 @@ const CampaignSales = () => {
             <p className='text-white/80 text-xs sm:text-sm mb-4 sm:mb-6'>
               Limited time offer. Do not miss out!
             </p>
-            <button className='group flex items-center justify-center md:justify-start gap-2 w-full sm:w-auto bg-orange-400 hover:bg-orange-500 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all duration-300 transform hover:translate-x-1'>
+            <button onClick={()=>router.push('/products')} className='group flex items-center justify-center md:justify-start gap-2 w-full sm:w-auto bg-orange-400 hover:bg-orange-500 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all duration-300 transform hover:translate-x-1'>
               <span className='text-sm sm:text-base'>Shop Now</span>
               <ArrowRight className='w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1' />
             </button>

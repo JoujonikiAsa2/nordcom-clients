@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import ReduxProvider from "@/redux/store/redux-provider";
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

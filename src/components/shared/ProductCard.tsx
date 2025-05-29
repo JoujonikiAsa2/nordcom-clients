@@ -53,38 +53,40 @@ const ProductCard = ({ product = defaultProduct }: ProductCardProps) => {
   const handleDetails = (id: string)=>{
     router.push(`/products/${id}`)
   }
+  console.log("hello ......", product)
 
   return (
     <div className="w-full max-w-xs rounded-2xl border p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-      {/* Product Image */}
-      <div className="relative">
-        <div
-          onClick={() => handleDetails(product.id)}
-        className="cursor-pointer top-2 right-2 z-10 hover:scale-110 transition-transform duration-300">
-          <Image
-            src={images[0] || prodImg}
-            alt={name}
-            width={300}
-            height={300}
-            className="mx-auto object-contain"
-            priority
-          />
-        </div>
-
-        {/* Badges */}
-        <div className="absolute top-2 left-2 gap-2 flex">
-          {discount > 0 && (
-            <span className="bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full hover:bg-red-600 transition-colors">
-              {discount}% OFF
-            </span>
-          )}
-          {isNew && (
-            <span className="bg-orange-400 text-white text-xs font-semibold px-2 py-1 hover:bg-orange-500 transition-colors rounded-full">
-              New
-            </span>
-          )}
-        </div>
+    {/* Product Image */}
+    <div className="relative">
+      <div 
+        onClick={() => handleDetails(product.id)}
+        className="relative w-full h-[250px] cursor-pointer overflow-hidden" // Fixed height container
+      >
+        <Image
+          src={images[0] || prodImg}
+          alt={name}
+          fill
+          className="object-contain hover:scale-110 transition-transform duration-300"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
+        />
       </div>
+
+      {/* Badges */}
+      <div className="absolute top-2 left-2 gap-2 flex z-10">
+        {discount > 0 && (
+          <span className="bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full hover:bg-red-600 transition-colors">
+            {discount}% OFF
+          </span>
+        )}
+        {isNew && (
+          <span className="bg-orange-400 text-white text-xs font-semibold px-2 py-1 hover:bg-orange-500 transition-colors rounded-full">
+            New
+          </span>
+        )}
+      </div>
+    </div>
 
       {/* Delivery Badge */}
       <div className="text-center mt-3">
@@ -95,7 +97,7 @@ const ProductCard = ({ product = defaultProduct }: ProductCardProps) => {
 
       {/* Product Details */}
       <div className="mt-3 space-y-1">
-        <p className="text-sm text-gray-500 font-medium">Apple</p>
+        <p className="text-sm text-gray-500 font-medium">Brand - {product.brand}</p>
         
         {/* Ratings */}
         <div className="flex items-center gap-1 text-orange-500 text-sm">

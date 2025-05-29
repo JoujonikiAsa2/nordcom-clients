@@ -5,7 +5,7 @@
     }
 
     const initialState: CounterState = {
-      value: 0,
+      value: 1,
     };
 
     export const counterSlice = createSlice({
@@ -16,7 +16,9 @@
           state.value += 1;
         },
         decrement: (state) => {
-          state.value -= 1;
+          if(state.value !== 1){
+            state.value -= 1;
+          }
         }
       },
     });

@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/store/hooks";
 import {
   decrement,
   increment,
-} from "@/redux/store/features/counter/counterSlice";
+} from "@/redux/features/counter/counterSlice";
 import { toast } from "sonner";
 
 const ProductDetail = ({ product }: { product: TProduct }) => {

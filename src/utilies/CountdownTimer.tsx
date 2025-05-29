@@ -49,9 +49,9 @@ const CountdownTimer: React.FC<CountdownProps> = ({ initialTime }) => {
   }, []);
 
   return (
-    <div className='w-[264px] h-[60px] bg-rose-500 rounded-sm'>
+    <div className='w-[264px] h-[60px] bg-[#101940]  rounded-md px-2'>
       <div className='flex justify-center gap-2 items-center h-full'>
-        <div>
+        <div className=''>
           <Image src={fireImg} alt="clock" width={25} height={25} />
         </div>
         <div className='flex flex-col items-center text-white text-lg font-semibold ml-2'>

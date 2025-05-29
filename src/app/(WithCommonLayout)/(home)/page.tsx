@@ -21,14 +21,14 @@ const Home = () => {
         <CampaignSales />
          <NewArivals />
          <CampaignSalesSummer />
-        <div className='my-10'>
-           <BrandCarousel />
-        </div>
+         <div className='my-10'>
+         <BrandCarousel />
+         </div>
         <WeOffering />
         <Blog />
         <ReviewCarousel
-        averageRating={4.5}
-        totalReviews={250}
+          averageRating={4.5}
+          totalReviews={250}
         />
     </div>
     </>

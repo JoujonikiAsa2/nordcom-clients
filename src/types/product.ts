@@ -56,5 +56,5 @@ export type TCategoryWithProducts = {
   _id: string
   name: string
   description?: string
-  products: TProduct[] // Reuse your existing TProduct type
+  Products: TProduct[] // Reuse your existing TProduct type
 }

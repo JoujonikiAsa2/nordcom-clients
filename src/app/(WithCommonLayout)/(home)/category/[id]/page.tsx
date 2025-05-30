@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import NotFound from '../not-found'
 import { TCategoryWithProducts, TProduct } from '@/types/product'
 import ProductCard from '@/components/shared/ProductCard'
+import Loader from '@/components/shared/Loader'
 
 type ProductCardProps = {
   product: TProduct;
@@ -21,7 +22,7 @@ async function fetchCategoryWithProducts(id: string): Promise<TCategoryWithProdu
     if (!res.ok) return null
     
     const data = await res.json()
-    console.log(data)
+    // console.log("category data ..........", data)
     return data.data
   } catch (error) {
     console.error('Error fetching category:', error)
@@ -60,17 +61,17 @@ function CategoryDynamicPage() {
   }, [id])
 
   if (error) return <NotFound />
-  if (loading) return <div>Loading...</div> // Add a proper loading component
+  if (loading) return  <Loader />
   if (!category) return <NotFound />
 
+
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto px-5 mt-8">
       <h1 className="text-3xl font-bold mb-8">{category.name}</h1>
       
-      {category.products?.length > 0 ? (
+      {category?.Products?.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {category.products.map((product) => {
-            // Convert TProduct to Product by ensuring brand is a string
+          {category.Products.map((product) => {
             const productForCard = {
               ...product,
               brand: typeof product.brand === 'string' ? product.brand : product.brand?.name ?? '',

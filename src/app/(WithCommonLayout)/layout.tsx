@@ -2,7 +2,6 @@ import DynamicNavigation from "@/components/dynamicNavigation/dynamicNavigation"
 import Footer from "@/components/shared/Footer";
 import Midnavbar from "@/components/shared/Midnavbar";
 import Navbar from "@/components/shared/Navbar";
-import Subscription from "@/components/shared/subscription";
 import Topmenubar from "@/components/shared/Topmenubar";
 import { fetchCategories } from "@/lib/api/category";
 
@@ -19,7 +18,7 @@ const CommonLayout = async({ children }: { children: React.ReactNode }) => {
         <main className="min-h-screen">{children}</main>
       </div>
       <div>
-        <Subscription />
+      
         <Footer />
       </div>
     </div>

@@ -53,7 +53,6 @@ const ProductCard = ({ product = defaultProduct }: ProductCardProps) => {
   const handleDetails = (id: string)=>{
     router.push(`/products/${id}`)
   }
-  console.log("hello ......", product)
 
   return (
     <div className="w-full max-w-xs rounded-2xl border p-4 shadow-md hover:shadow-xl transition-shadow duration-300">

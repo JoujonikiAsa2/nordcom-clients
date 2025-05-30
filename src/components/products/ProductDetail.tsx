@@ -12,12 +12,15 @@ import {
   increment,
 } from "@/redux/features/counter/counterSlice";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { addToCart } from "@/redux/features/cart/cartSlice";
 
 const ProductDetail = ({ product }: { product: TProduct }) => {
   const [preview, setPreview] = React.useState<string>("");
   const [borderIndex, seBorderIndex] = React.useState<number>(0);
   const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
+  const router = useRouter()
 
   const handleImage = (item: string, index: number) => {
     setPreview(item as string);
@@ -27,6 +30,11 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
   const handleFavoriteProduct = () =>{
     toast.success("Added to the wishlist")
   }
+const handleCart = (product: TProduct) => {
+  dispatch(addToCart(product));
+  toast.success("Added to cart!");
+  router.push('/cart');
+};
   return (
     <div className="h-full">
       <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 px-4 poppins">
@@ -83,7 +91,7 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
               </p>
             </div>
             <div className="font-semibold text-3xl text-[#101940] leading-[150%] flex items-center gap-6">
-              <p>${product.price}</p>
+              <p>${product?.price}</p>
               <p className="font-normal text-base text-[#848484] leading-[170%] flex items-center gap-4">
                 <Star fill="#FAB758" className="text-[#FAB758] size-5" />
                 <span>4.5 - 254</span> reviews
@@ -111,6 +119,7 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
               </Button>
             </div>
             <Button
+            onClick={()=>handleCart(product)}
               variant="default"
               className="w-[170px]  h-[44px] items-center gap-2 bg-orange-400 hover:bg-[#101940] text-white"
             >
@@ -119,19 +128,19 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
             </Button>
           </div>
           <div className="grid grid-cols-1 gap-9 pt-8">
-            {product.description && (
+            {product?.description && (
               <div className="w-full">
                 <div className="bg-[#F9F9F9] w-full h-[70px] rounded-t-2xl font-medium text-2xl text-[#101940] leading-[150%]  flex items-center justify-start px-4">
                   <span>Description</span>
                 </div>
                 <div className=" rounded-b-2xl px-8 py-4 shadow-sm">
                   <p className="font-normal text-base text-[#848484] leading-[170%]">
-                    {product.description}
+                    {product?.description}
                   </p>
                 </div>
               </div>
             )}
-            {product.specification && (
+            {product?.specification && (
               <div className="w-full">
                 <div className="bg-[#F9F9F9] w-full h-[70px] rounded-t-2xl font-medium text-2xl text-[#101940] leading-[150%]  flex items-center justify-start px-4">
                   <span>Specification</span>
@@ -146,7 +155,7 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
                         key={index}
                         className="font-normal text-base text-[#848484] leading-[170%] flex flex-wrap gap-4 border-b py-2"
                       >
-                        <div className="">{specification.label}</div>
+                        <div className="">{specification?.label}</div>
                         <div className=" text-[#2B2B2B]">
                           {specification?.value}
                         </div>

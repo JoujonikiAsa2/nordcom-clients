@@ -13,6 +13,7 @@ import {
 import { createNoopStorage } from "./storage";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import counterReducer from "../features/counter/counterSlice";
+import cartReducer from "../features/cart/cartSlice"
 
 const storage =
   typeof window !== "undefined"
@@ -28,6 +29,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   counter: counterReducer,
+   cart: cartReducer,
+  
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

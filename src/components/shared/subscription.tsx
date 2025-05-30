@@ -10,7 +10,7 @@ const Subscription = () => {
     };
 
     return (
-        <div className='bg-orange-500 py-16 px-4'>
+        <div className='bg-orange-500 py-16 px-4 rounded-md my-8'>
             <div className='max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8'>
                 <div className='text-white space-y-2'>
                     <h2 className='text-3xl font-bold'>Subscribe to Our Newsletter</h2>

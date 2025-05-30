@@ -27,7 +27,7 @@ export default function BrandCarousel() {
   const [emblaRef] = useEmblaCarousel({ dragFree: true, loop: true })
 
   return (
-    <div className="overflow-hidden" ref={emblaRef}>
+    <div className="overflow-hidden my-8" ref={emblaRef}>
       <div className="flex space-x-6">
         {logos.map((logo, idx) => (
           <div

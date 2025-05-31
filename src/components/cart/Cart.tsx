@@ -21,7 +21,6 @@ const Cart = () => {
   const { items, total } = useAppSelector((state) => state.cart);
   const watchTotal = 3.99;
   const orderTotal = total + watchTotal;
-
   const handleUpdateQuantity = (id: string, quantity: number) => {
     if (quantity < 1) return;
     dispatch(updateQuantity({ id, quantity }));
@@ -68,7 +67,7 @@ const Cart = () => {
         <div className="lg:col-span-2 bg-[#FFF8EE] p-2">
           <div>
             <div className="space-y-4">
-              {items?.map((item:CartItem, index:number) => (
+              {items?.map((item: CartItem, index: number) => (
                 <div key={item.id} className="bg-white rounded-xl p-4 m-4">
                   <div className="flex items-center gap-4 py-4">
                     <div className="flex-shrink-0">
@@ -149,14 +148,14 @@ const Cart = () => {
                   <span>${orderTotal.toFixed(2)}</span>
                 </div>
               </div>
-              <Link href="/checkout">
-                <Button
-                  className="mt-4 w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3"
-                  size="lg"
-                >
-                  Proceed To Checkout
-                </Button>
-              </Link>
+                <Link href={`/checkout`}>
+                  <Button
+                    className="mt-4 w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3"
+                    size="lg"
+                  >
+                    Proceed To Checkout
+                  </Button>
+                </Link>
             </CardContent>
           </Card>
         </div>

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useEffect, useState, useCallback } from 'react';
 import LoginModal from '../auth/loginFormModal';
 import { useRouter } from 'next/navigation';
+import deleteTokenFromCookie from '@/helpers/deleteToken';
 
 const Midnavbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -32,8 +33,9 @@ const Midnavbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [handleScroll]);
 
-    const handleLogout = useCallback(() => {
+    const handleLogout = useCallback(async() => {
         sessionStorage.clear();
+        await deleteTokenFromCookie()
         setUserName('');
         router.push('/');
     }, [router]);

@@ -4,12 +4,13 @@ import { useAppSelector } from '@/redux/store/hooks';
 import { HeartIcon, LogInIcon, Search, ShoppingCartIcon } from 'lucide-react';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import LoginModal from '../auth/loginFormModal';
 
 const Midnavbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [showSearch, setShowSearch] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
-
+    const [showLogin, setShowLogin] = useState(false);
     // Get cart items count from Redux store
     const cartItems = useAppSelector((state) => state.cart.items);
     const cartItemsCount = cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -47,10 +48,10 @@ const Midnavbar = () => {
                     </div>
 
                     <div className='flex items-center gap-6'>
-                        <Link href="/login" className='flex flex-col items-center text-gray-600 hover:text-[#101940] transition-colors'>
+                        <button  onClick={() => setShowLogin(true)} className='flex flex-col items-center text-gray-600 hover:text-[#101940] transition-colors'>
                             <LogInIcon size={24} />
                             <span className='text-xs mt-1'>Login</span>
-                        </Link>
+                        </button>
                         
                         <Link href="/wishlist" className='flex flex-col items-center text-gray-600 hover:text-[#101940] transition-colors relative'>
                             <HeartIcon size={24} />
@@ -122,6 +123,8 @@ const Midnavbar = () => {
                     )}
                 </div>
             </div>
+
+             <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
         </div>
     );
 };

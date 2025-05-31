@@ -22,28 +22,39 @@ export default function LoginModal({ isOpen, onClose }: { isOpen: boolean; onClo
   });
   const [open, setOpen] = useState(false);
 
-  const onSubmit: SubmitHandler<LoginFormValues> = async (data) => {
-    try {
-      const res = await fetch("https://nordcom-backend-server.vercel.app/api/v1/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+const onSubmit: SubmitHandler<LoginFormValues> = async (data) => {
+  try {
+    const res = await fetch("https://nordcom-backend-server.vercel.app/api/v1/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
 
-      const result = await res.json();
+    const result = await res.json();
 
-      if (res.ok && result.success) {
-        toast.success(result.message || "Login successful");
-        onClose(); // close modal
-        router.push("/"); // redirect home or wherever
-      } else {
-        toast.error(result.message || "Login failed");
-      }
-    } catch (error: any) {
-      console.error(error);
-      toast.error("Something went wrong!");
+    if (res.ok && result.success) {
+      const { accessToken, refreshToken, name, email, role } = result.data;
+
+      // Save to cookies
+    sessionStorage.setItem("accessToken", accessToken);
+    sessionStorage.setItem("refreshToken", refreshToken);
+    sessionStorage.setItem("userName", name);
+    sessionStorage.setItem("userEmail", email);
+    sessionStorage.setItem("userRole", role);
+
+      //showing success message .. 
+      toast.success(result.message || "Login successful");
+      onClose(); 
+      router.push( "/dashboard");
+    } else {
+      toast.error(result.message || "Login failed");
     }
-  };
+  } catch (error: any) {
+    console.error(error);
+    toast.error("Something went wrong!");
+  }
+};
+
 
   if (!isOpen) return null;
 
@@ -62,7 +73,7 @@ export default function LoginModal({ isOpen, onClose }: { isOpen: boolean; onClo
             <input
               type="email"
               {...register("email")}
-              className="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500"
+              className="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-orange-500"
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
           </div>
@@ -72,7 +83,7 @@ export default function LoginModal({ isOpen, onClose }: { isOpen: boolean; onClo
             <input
               type="password"
               {...register("password")}
-              className="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500"
+              className="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-orange-500"
             />
             {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
           </div>

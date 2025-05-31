@@ -14,9 +14,9 @@ const DealOfTheDay = ({ products }: Props) => {
   const [visibleCount, setVisibleCount] = useState(8)
 
   const initialTime = {
-    hours: 22,
-    minutes: 37,
-    seconds: 52
+    hours: 95,
+    minutes: 39,
+    seconds: 42
   }
 
   const loadMoreProducts = () => {

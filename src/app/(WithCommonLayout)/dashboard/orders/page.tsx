@@ -40,7 +40,7 @@ const MyOrders = () => {
           return;
         }
 
-        const response = await fetch('https://nordcom-backend-server.vercel.app/api/v1/order/my-order', {
+        const response = await fetch('https://nordcom-backend-server.vercel.app/api/v1/order/my-orders', {
           method: 'GET',
           headers: {
             'Authorization': `${userToken}`,

@@ -53,7 +53,7 @@ const Midnavbar = () => {
                     Logout
                 </button>
                 <button
-                    onClick={() => router.push('/dashboard')}
+                    onClick={() => router.push('/dashboard/orders')}
                     className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
                 >
                     Dashboard

@@ -11,26 +11,23 @@ interface SidebarProps {
 const DashboardSidebar: React.FC<SidebarProps> = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
-  const userName = sessionStorage.getItem("userName")
+  const userName = sessionStorage.getItem("userName");
 
   const navItems = [
+     {
+      name: 'My Orders',
+      href: '/dashboard/orders',
+      icon: ShoppingBag,
+    },
     {
       name: 'Edit Profile',
       href: '/dashboard/profile',
       icon: User,
-    
-    },
-    {
-      name: 'My Orders',
-      href: '/dashboard/orders',
-      icon: ShoppingBag,
-      
     },
     {
       name: 'Review',
       href: '/dashboard/reviews',
       icon: Sparkles,
-      
     }
   ];
 
@@ -41,7 +38,7 @@ const DashboardSidebar: React.FC<SidebarProps> = () => {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="md:hidden fixed top-22 left-1 z-50 p-2 bg-white rounded-lg shadow-md border"
+        className="md:hidden fixed top-4 left-4 z-50 p-2 bg-white rounded-lg shadow-md border"
       >
         {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
@@ -55,15 +52,15 @@ const DashboardSidebar: React.FC<SidebarProps> = () => {
       )}
 
       {/* Sidebar */}
-      <div className={`
-        fixed md:static top-0 left-0 h-full w-56 bg-gray-200 border-r border-gray-200 
+      <aside className={`
+        fixed md:relative top-0 left-0 h-screen w-64 bg-gray-200 border-r border-gray-200 
         transform transition-transform duration-300 ease-in-out z-40
         ${isMobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
       `}>
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="p-6 border-b border-gray-100">
-            <div className="flex items-center space-x-3 ">
+            <div className="flex items-center space-x-3">
               <div className="w-12 h-12 border-2 cursor-pointer border-orange-500 bg-[#101940] rounded-full flex items-center justify-center">
                 <span className="text-white font-semibold text-xs">
                   {userName?.slice(0,4)}
@@ -99,16 +96,11 @@ const DashboardSidebar: React.FC<SidebarProps> = () => {
                           ${active ? 'text-white' : 'text-gray-400 group-hover:text-[#101940]'}
                         `} 
                       />
-                      <div className="flex-1">
-                        <div className={`font-medium ${active ? 'text-white' : 'text-gray-900'}`}>
-                          {item.name}
-                        </div>
-                       
-                      </div>
-                      
-                      {/* Active Indicator */}
+                      <span className={`font-medium ${active ? 'text-white' : 'text-gray-900'}`}>
+                        {item.name}
+                      </span>
                       {active && (
-                        <div className="w-2 h-2 bg-white rounded-full ml-2" />
+                        <div className="w-2 h-2 bg-white rounded-full ml-auto" />
                       )}
                     </Link>
                   </li>
@@ -116,12 +108,8 @@ const DashboardSidebar: React.FC<SidebarProps> = () => {
               })}
             </ul>
           </nav>
-
         </div>
-      </div>
-
-      {/* Content Spacer for Desktop */}
-      <div className="hidden md:block w-64 flex-shrink-0" />
+      </aside>
     </>
   );
 };

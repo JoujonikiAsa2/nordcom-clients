@@ -68,7 +68,32 @@ body {
   }
 }
 
+input[type="radio"] {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #d1d5db; /* default border color (gray-300) */
+  border-radius: 9999px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
 
+input[type="radio"]:checked {
+  border-color: #EA580C; /* red-500 */
+  background-color: #EA580C;
+}
+
+input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: white;
+  border-radius: 9999px;
+}
 
 @layer base {
   * {
@@ -79,11 +104,6 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
-
-
-
-
 
 
 @layer base {

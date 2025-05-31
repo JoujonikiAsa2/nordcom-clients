@@ -22,7 +22,6 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
   const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
   const router = useRouter()
-
   const handleImage = (item: string, index: number) => {
     setPreview(item as string);
     seBorderIndex(index as number);
@@ -32,11 +31,12 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
     toast.success("Added to the wishlist")
   }
 const handleCart = (product: TProduct) => {
-  const items = {
+
+  const item = {
     productId:product.id,
     quantity: count
   }
-  addToDBCart(items)
+  addToDBCart(item)
   dispatch(addToCart(product));
   toast.success("Added to cart!");
   router.push('/cart');

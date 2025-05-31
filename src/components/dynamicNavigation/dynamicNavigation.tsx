@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import React from "react";
 import { Home, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 const DynamicNavigation = () => {
   const pathName = usePathname();
@@ -10,16 +11,17 @@ const DynamicNavigation = () => {
   if (pathName === "/") return null;
 
   // Parse the pathname to create breadcrumb items
-  const pathSegments = pathName.split('/').filter(segment => segment);
-  
+  const pathSegments = pathName.split("/").filter((segment) => segment);
+
   // Create breadcrumb items
   const breadcrumbItems = [
     { label: "Home", path: "/", isHome: true },
     ...pathSegments.map((segment, index) => ({
-      label: segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
-      path: `/${pathSegments.slice(0, index + 1).join('/')}`,
-      isHome: false
-    }))
+      label:
+        segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " "),
+      path: `/${pathSegments.slice(0, index + 1).join("/")}`,
+      isHome: false,
+    })),
   ];
 
   return (
@@ -28,24 +30,28 @@ const DynamicNavigation = () => {
         <React.Fragment key={item.path}>
           {/* Home icon or text */}
           {item.isHome ? (
-            <div className="flex items-center space-x-1">
-              <Home className="w-4 h-4 text-gray-600" />
-              <span className="text-gray-600 hover:text-gray-800 cursor-pointer">
+            <Link href={item?.path}>
+              <div className="flex items-center space-x-1">
+                <Home className="w-4 h-4 text-gray-600" />
+                <span className="text-gray-600 hover:text-gray-800 cursor-pointer">
+                  {item.label}
+                </span>
+              </div>
+            </Link>
+          ) : (
+            <Link href={item?.path}>
+              <span
+                className={`${
+                  index === breadcrumbItems.length - 1
+                    ? "text-gray-900 font-medium"
+                    : "text-gray-600 hover:text-gray-800 cursor-pointer"
+                }`}
+              >
                 {item.label}
               </span>
-            </div>
-          ) : (
-            <span 
-              className={`${
-                index === breadcrumbItems.length - 1 
-                  ? 'text-gray-900 font-medium' 
-                  : 'text-gray-600 hover:text-gray-800 cursor-pointer'
-              }`}
-            >
-              {item.label}
-            </span>
+            </Link>
           )}
-          
+
           {/* Separator */}
           {index < breadcrumbItems.length - 1 && (
             <ChevronRight className="w-4 h-4 text-gray-400" />

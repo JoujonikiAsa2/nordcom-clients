@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+import animate from "tailwindcss-animate"; 
 export default {
     darkMode: ["class"],
     content: [
@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
   	extend: {
+		screens: {
+        xs: "440px", // 👈 Custom breakpoint
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -58,5 +61,5 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate],
 } satisfies Config;

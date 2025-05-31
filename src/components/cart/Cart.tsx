@@ -6,10 +6,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 // import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { removeFromCart, updateQuantity } from "@/redux/features/cart/cartSlice";
+import {
+  CartItem,
+  removeFromCart,
+  updateQuantity,
+} from "@/redux/features/cart/cartSlice";
 import { toast } from "sonner";
 import { useAppDispatch, useAppSelector } from "@/redux/store/hooks";
 import { addToDBCart, removeItemFromCart } from "../services/CartService";
+import shoppintCart from "@/assets/shopping-cart.png";
 
 const Cart = () => {
   const dispatch = useAppDispatch();
@@ -20,23 +25,31 @@ const Cart = () => {
   const handleUpdateQuantity = (id: string, quantity: number) => {
     if (quantity < 1) return;
     dispatch(updateQuantity({ id, quantity }));
-    const item ={
+    const item = {
       productId: id,
-      quantity
-    }
-    addToDBCart(item)
+      quantity,
+    };
+    addToDBCart(item);
     toast.success("Cart updated");
   };
 
   const handleRemoveItem = (id: string) => {
     dispatch(removeFromCart(id));
-    removeItemFromCart(id)
+    removeItemFromCart(id);
     toast.success("Item removed from cart");
   };
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex flex-col  gap-4 items-center justify-center">
+        <Image
+          src={shoppintCart}
+          alt={"Shopping Cart"}
+          height={100}
+          width={100}
+          className="object-contain hover:scale-110 transition-transform duration-300"
+          priority
+        />
         <div className="text-center">
           <h2 className="text-2xl font-semibold mb-4">Your cart is empty</h2>
           <Link href="/products">
@@ -55,7 +68,7 @@ const Cart = () => {
         <div className="lg:col-span-2 bg-[#FFF8EE] p-2">
           <div>
             <div className="space-y-4">
-              {items.map((item, index) => (
+              {items?.map((item:CartItem, index:number) => (
                 <div key={item.id} className="bg-white rounded-xl p-4 m-4">
                   <div className="flex items-center gap-4 py-4">
                     <div className="flex-shrink-0">
@@ -80,7 +93,7 @@ const Cart = () => {
                         variant="outline"
                         size="icon"
                         className="h-8 w-8"
-                        onClick={() => 
+                        onClick={() =>
                           handleUpdateQuantity(item.id, item.quantity - 1)
                         }
                       >
@@ -93,7 +106,7 @@ const Cart = () => {
                         variant="outline"
                         size="icon"
                         className="h-8 w-8"
-                        onClick={() => 
+                        onClick={() =>
                           handleUpdateQuantity(item.id, item.quantity + 1)
                         }
                       >

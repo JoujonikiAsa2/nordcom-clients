@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 
-const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL as string;
+const backendUrl = process.env.BACKEND_URL as string;
 
 export const getSession = async (payload: {
   name: string;

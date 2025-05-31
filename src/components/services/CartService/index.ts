@@ -4,7 +4,7 @@ import { AuthUser } from "@/types/user";
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 
-const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL as string;
+const backendUrl = process.env.BACKEND_URL as string;
 
 export const getMyCarts = async () => {
   const token = (await cookies()).get("accessToken")?.value as string;

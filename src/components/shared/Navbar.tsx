@@ -33,7 +33,7 @@ const Navbar = ({ categories }: { categories: Category[] }) => {
   return (
     <nav className="">
       <div className="relative">
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-center py-2 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-start ml-2 md:items-center py-2 gap-4">
           <Button 
             variant="default"
             className="flex-wrap items-center gap-2 bg-orange-400 hover:bg-[#101940] text-white"

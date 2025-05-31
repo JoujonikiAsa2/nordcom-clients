@@ -14,6 +14,7 @@ import {
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { addToCart } from "@/redux/features/cart/cartSlice";
+import { addToDBCart } from "../services/CartService";
 
 const ProductDetail = ({ product }: { product: TProduct }) => {
   const [preview, setPreview] = React.useState<string>("");
@@ -31,6 +32,11 @@ const ProductDetail = ({ product }: { product: TProduct }) => {
     toast.success("Added to the wishlist")
   }
 const handleCart = (product: TProduct) => {
+  const items = {
+    productId:product.id,
+    quantity: count
+  }
+  addToDBCart(items)
   dispatch(addToCart(product));
   toast.success("Added to cart!");
   router.push('/cart');

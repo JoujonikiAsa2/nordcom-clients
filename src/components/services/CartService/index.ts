@@ -1,9 +1,11 @@
 "use server";
 
 import { CartItem } from "@/types/cart";
+import { AuthUser } from "@/types/user";
+import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 
-const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL as string;
+const backendUrl = process.env.BACKEND_URL as string;
 
 export const getMyCarts = async () => {
   const token = (await cookies()).get("accessToken")?.value as string;
@@ -21,12 +23,13 @@ export const getMyCarts = async () => {
   return result;
 };
 
-export const addToCart = async (userId: string, items: CartItem) => {
-  const paylaod = {
-    userId,
-    items,
+export const addToDBCart = async (item: CartItem) => {
+  const token = (await cookies()).get("accessToken")?.value as string
+  const user = jwtDecode(token) as AuthUser
+    const paylaod = {
+    email: user?.email,
+    item,
   };
-  const token = (await cookies()).get("accessToken")?.value as string;
   const result = await fetch(`${backendUrl}/cart/add`, {
     method: "POST",
     headers: {

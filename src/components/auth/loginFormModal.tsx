@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import RegisterModal from "./registerFormModal";
+import setTokenInCookie from "@/helpers/setToken";
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
@@ -42,10 +43,11 @@ const onSubmit: SubmitHandler<LoginFormValues> = async (data) => {
     sessionStorage.setItem("userEmail", email);
     sessionStorage.setItem("userRole", role);
 
+     await setTokenInCookie(accessToken, "accessToken")
       //showing success message .. 
       toast.success(result.message || "Login successful");
       onClose(); 
-      router.push( "/dashboard");
+      router.push( "/dashboard/orders");
     } else {
       toast.error(result.message || "Login failed");
     }

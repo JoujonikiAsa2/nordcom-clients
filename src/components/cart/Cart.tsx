@@ -9,6 +9,7 @@ import Link from "next/link";
 import { removeFromCart, updateQuantity } from "@/redux/features/cart/cartSlice";
 import { toast } from "sonner";
 import { useAppDispatch, useAppSelector } from "@/redux/store/hooks";
+import { addToDBCart, removeItemFromCart } from "../services/CartService";
 
 const Cart = () => {
   const dispatch = useAppDispatch();
@@ -19,11 +20,17 @@ const Cart = () => {
   const handleUpdateQuantity = (id: string, quantity: number) => {
     if (quantity < 1) return;
     dispatch(updateQuantity({ id, quantity }));
+    const item ={
+      productId: id,
+      quantity
+    }
+    addToDBCart(item)
     toast.success("Cart updated");
   };
 
   const handleRemoveItem = (id: string) => {
     dispatch(removeFromCart(id));
+    removeItemFromCart(id)
     toast.success("Item removed from cart");
   };
 
@@ -43,18 +50,18 @@ const Cart = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen p-4 lg:p-0">
       <div className="grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 bg-[#FFF8EE] p-2">
           <div>
             <div className="space-y-4">
-              {items.map((item) => (
+              {items.map((item, index) => (
                 <div key={item.id} className="bg-white rounded-xl p-4 m-4">
                   <div className="flex items-center gap-4 py-4">
                     <div className="flex-shrink-0">
                       <Image
                         src={item.images[0] || "/placeholder.svg"}
-                        alt={item.name}
+                        alt={`item-${index}`}
                         width={60}
                         height={60}
                         className="rounded-lg border"
@@ -131,7 +138,7 @@ const Cart = () => {
               </div>
               <Link href="/checkout">
                 <Button
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3"
+                  className="mt-4 w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3"
                   size="lg"
                 >
                   Proceed To Checkout

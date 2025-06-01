@@ -1,6 +1,5 @@
 "use server";
 
-import { CartItem } from "@/types/cart";
 import { AuthUser } from "@/types/user";
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
@@ -23,10 +22,13 @@ export const getMyCarts = async () => {
   return result;
 };
 
-export const addToDBCart = async (item: CartItem) => {
-  const token = (await cookies()).get("accessToken")?.value as string
-  const user = jwtDecode(token) as AuthUser
-    const paylaod = {
+export const addToDBCart = async (item: {
+  productId: string;
+  quantity: number;
+}) => {
+  const token = (await cookies()).get("accessToken")?.value as string;
+  const user = jwtDecode(token) as AuthUser;
+  const paylaod = {
     email: user?.email,
     item,
   };

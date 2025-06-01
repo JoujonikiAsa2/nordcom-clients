@@ -1,5 +1,6 @@
 import React from 'react'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 const CampaignSalesSummer = () => {
   return (
@@ -22,10 +23,10 @@ const CampaignSalesSummer = () => {
             <p className='text-orange-100 text-xs sm:text-sm mb-4 sm:mb-6'>
               Limited time offer. Do not miss out!
             </p>
-            <button className='group flex items-center justify-center md:justify-start gap-2 w-full sm:w-auto bg-white hover:bg-orange-50 text-orange-500 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all duration-300 transform hover:translate-x-1'>
+            <Link href="/products"><button className='group flex items-center justify-center md:justify-start gap-2 w-full sm:w-auto bg-white hover:bg-orange-50 text-orange-500 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all duration-300 transform hover:translate-x-1'>
               <span className='text-sm sm:text-base font-semibold'>Shop Now</span>
               <ArrowRight className='w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1' />
-            </button>
+            </button></Link>
           </div>
           
           {/* Right Section */}

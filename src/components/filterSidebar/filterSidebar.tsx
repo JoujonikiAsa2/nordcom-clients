@@ -6,6 +6,7 @@ export default function FilterSidebar() {
   const [expandedSections, setExpandedSections] = useState({
     primaryCategories: true,
     categories: true,
+    price: true,
     brand: true,
     storage: true,
     condition: true,
@@ -114,7 +115,7 @@ export default function FilterSidebar() {
   );
 
   return (
-    <div className="w-72 bg-white  border-r border-gray-200 ">
+    <div className="max-w-lg bg-white  lg:border-r border-gray-200 ">
       <div className="p-4 ">
         {/* Primary Categories */}
         <FilterSection
@@ -145,7 +146,7 @@ export default function FilterSidebar() {
         </FilterSection>
 
         {/* Categories with Price Range */}
-        <FilterSection title="Categories" sectionKey="categories2">
+        <FilterSection title="Price" sectionKey="pariceRange">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-sm text-gray-600">$0</span>

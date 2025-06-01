@@ -53,15 +53,14 @@ const ProductCard = ({ product = defaultProduct }: ProductCardProps) => {
   const handleDetails = (id: string)=>{
     router.push(`/products/${id}`)
   }
-  console.log("hello ......", product)
 
   return (
-    <div className="w-full max-w-xs rounded-2xl border p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
+    <div className="w-full max-w-md rounded-2xl border p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
     {/* Product Image */}
     <div className="relative">
       <div 
         onClick={() => handleDetails(product.id)}
-        className="relative w-full h-[250px] cursor-pointer overflow-hidden" // Fixed height container
+        className="relative w-full h-[250px] cursor-pointer overflow-hidden" 
       >
         <Image
           src={images[0] || prodImg}
@@ -107,7 +106,7 @@ const ProductCard = ({ product = defaultProduct }: ProductCardProps) => {
 
         {/* Product Name */}
         <h3 className="text-base font-semibold text-slate-800 line-clamp-2">
-          {name.slice(0, 20)} ...
+          {name.slice(0, 17)} ...
         </h3>
 
         {/* Delivery Info */}
@@ -122,12 +121,12 @@ const ProductCard = ({ product = defaultProduct }: ProductCardProps) => {
           {price > discountPrice && (
             <p className="text-sm text-gray-400 line-through">${price}</p>
           )}
-          <p className="text-lg font-bold text-slate-900">${discountPrice}</p>
+          <p className="text-sm font-bold text-slate-900">${discountPrice}</p>
         </div>
 
         <button 
          onClick={() => handleDetails(product.id || '')}
-          className="bg-[#101940] hover:bg-orange-400 text-white p-2 rounded-md w-20 
+          className="bg-[#101940] hover:bg-orange-400 text-white p-2 rounded-md w-16
             flex items-center justify-center transition-colors duration-300 
             active:scale-95 transform"
         >

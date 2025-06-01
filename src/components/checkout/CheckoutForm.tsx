@@ -22,11 +22,11 @@ import * as Switch from "@radix-ui/react-switch";
 import { clearCart } from "@/redux/features/cart/cartSlice";
 
 const CheckoutForm = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+  const [loading, setLoading] = useState<boolean>(false);
   const [coupon, setCoupon] = useState("");
   const router = useRouter();
   const { total } = useAppSelector((state) => state.cart);
-
 
   const form = useForm({
     resolver: zodResolver(checkoutFormSchema),
@@ -34,11 +34,18 @@ const CheckoutForm = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
-      console.log(data)
-      const res = await addOrder({...data, coupon});
-      dispatch(clearCart())
-      toast.success("Order submited successfully!");
-      if(data.paymentMethod === "online"){
+      setLoading(true);
+      const res = await addOrder({ ...data, coupon });
+      console.log(res)
+      dispatch(clearCart());
+      setLoading(false);
+      if (res?.success === true) {
+        toast.success(res?.message);
+      }
+      if (res?.success === false) {
+        toast.error(res?.message);
+      }
+      if (data.paymentMethod === "online") {
         router.push(`/payment/${res?.data?.id}`);
       }
     } catch (err: any) {
@@ -128,17 +135,17 @@ const CheckoutForm = () => {
                   </FormLabel>
                   <FormControl className="col-span-4 md:col-span-3">
                     <div className="flex flex-col md:flex-row gap-4">
-                      <label className="flex items-center space-x-2">
+                      <label className="flex justify-center items-center space-x-2">
                         <input
                           type="radio"
                           value="cod"
                           checked={field.value === "cod"}
                           onChange={field.onChange}
-                          className="form-radio text-violet-600"
+                          className="form-radio ancent-red-300"
                         />
                         <span>Cash on Delivery</span>
                       </label>
-                      <label className="flex items-center space-x-2">
+                      <label className="flex justify-center items-center space-x-2">
                         <input
                           type="radio"
                           value="online"
@@ -158,12 +165,12 @@ const CheckoutForm = () => {
             {/* Terms and Conditions */}
             <div className="flex items-start gap-3 p-4 bg-transparent border rounded-lg">
               <Switch.Root
-                className="relative h-[25px] w-[120px] bg-gray-400 cursor-default rounded-full bg-blackA6 shadow-[0_2px_10px] shadow-blackA4 outline-none focus:shadow-[0_0_0_2px] focus:shadow-gray-400 data-[state=checked]:bg-green-400"
+                className="relative h-[25px] w-[120px] bg-gray-400 cursor-default rounded-full bg-blackA6  outline-none data-[state=checked]:bg-green-400"
                 id="terms"
               >
                 <Switch.Thumb className="block size-[21px] translate-x-0.5 rounded-full bg-white  shadow-blackA4 transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px]" />
               </Switch.Root>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-[#848484]">
                 <p>
                   By submitting my email and mobile number on this form, I agree
                   to receive customized promotional and personalized messages. I
@@ -175,7 +182,6 @@ const CheckoutForm = () => {
             </div>
           </div>
           <div className="md:mt-12 p-4 h-fit bg-[#FFF8EE] rounded-xl">
-
             <div className="text-lg text-[#2B2B2B] px-6 py-4 flex justify-between border-b">
               <p>Subtotal</p>
               <p>${total.toFixed(2)}</p>
@@ -198,7 +204,7 @@ const CheckoutForm = () => {
               className="mt-4 w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3"
               size="lg"
             >
-              Submit Order
+              {loading ? "Submittng..." : "Submit Order"}
             </Button>
           </div>
         </div>

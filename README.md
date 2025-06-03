@@ -2,7 +2,7 @@
 
 A modern, full-stack e-commerce platform built with Next.js and Node.js, offering a seamless shopping experience with robust backend capabilities.
 
-![Nordcom Banner](./public/banner.png)
+![Nordcom Banner](/public/ecom.png)
 
 ## 🚀 Features
 

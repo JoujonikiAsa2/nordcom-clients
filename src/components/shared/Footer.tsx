@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import NordcomLogo from '@/assets/svg/nordcomlogo';
 
 const Footer = () => {
     return (
@@ -10,7 +11,11 @@ const Footer = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
                     {/* Company Info */}
                     <div className='space-y-4'>
-                        <h3 className='text-white text-xl font-bold mb-4'>NordCom</h3>
+                        <div className='bg-white p-1 rounded-md flex items-center justify-center'>
+                              <Link href="/" className="flex-shrink-0 ">
+                                <NordcomLogo className="h-12 w-auto" />
+                            </Link>
+                        </div>
                         <p className='text-sm'>Your trusted destination for quality products and exceptional service.</p>
                         <div className='flex space-x-4'>
                             <Link href="#" className='hover:text-white transition-colors'>

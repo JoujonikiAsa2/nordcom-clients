@@ -1,7 +1,7 @@
 # Nordcom E-commerce Platform
 
 A modern, full-stack e-commerce platform built with Next.js and Node.js, offering a seamless shopping experience with robust backend capabilities.
-
+Nordcom Backend: https://github.com/JoujonikiAsa2/nordcom-backend-server
 ![Nordcom Banner](/public/ecom.png)
 
 ## 🚀 Features
